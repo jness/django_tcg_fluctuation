@@ -13,4 +13,4 @@ def index(request):
         c = Cards.objects.filter(mtgset=s).order_by('name')
         cards[s] = c
 
-    return render(request, 'index.html', {'cards': set_sort})
+    return render(request, 'index.html', {'cards': cards})
