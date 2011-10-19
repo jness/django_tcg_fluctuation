@@ -9,9 +9,10 @@
 <ul class="hoverbox">
 <table cellpadding=1 cellspacing=2 width='80%'><tr valign='top'>
 
+{% load cards_in_set %}
 {% for set in cards  %}
    <td style="border-left: 1px solid black; padding: 5px;"><h3>{{ set }}</h3>
-	 {% for card in set %}
+	 {% for card in set|cards_in_set:cards %}
          <table cellpadding=0 cellspacing=2>
          <tr>
             <td width=45>
