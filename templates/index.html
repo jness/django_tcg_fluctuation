@@ -10,15 +10,15 @@
 <table width='100%'><tr valign='top'>
 {% for set in mtgsets %}
    <td><h3>{{ set }}</h3>
-   {% for card in latest_prices %}
-      {% if card.info.mtgset in set %}
+   {% for card in cards %}
+      {% if card.mtgset in set %}
          <table cellpadding=0 cellwidth=0>
          <tr>
             <td width=45>
-            {% if card.paverage > card.average %}
+            {% if card.prev_average > card.average %}
                 <font size=2 color='red'></b>${{ card.average }}:</b></font>
             {% else %}
-               {% if card.paverage < card.average %}
+               {% if card.prev_average < card.average %}
                    <font size=2 color='#00CC00'><b>${{ card.average }}:</b></font>
                 {% else %}
                    <font size=2>${{ card.average }}:</font>

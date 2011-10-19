@@ -5,15 +5,9 @@ from django.core.management import setup_environ
 import settings
 setup_environ(settings)
 
-from fluctuation.models import Cards, History
+from fluctuation.models import Cards
 from urllib2 import urlopen, quote
 from re import compile
-
-try:
-    latest_count = History.objects.latest('created').runcount
-    latest_count = latest_count + 1
-except:
-    latest_count = 1
 
 for c in Cards.objects.all():
     cardname = quote(c.name)
@@ -35,5 +29,6 @@ for c in Cards.objects.all():
     print 'Average Price is: %s' % avg
 
     # Add price to table
-    h = History(name=c.name, average=avg, runcount=latest_count, info=c)
-    h.save()
+    c.prev_average = c.average
+    c.average = avg
+    c.save()
