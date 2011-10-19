@@ -21,8 +21,9 @@
                {% if card.paverage < card.average %}
                    <font size=2 color='#00CC00'><b>${{ card.average }}:</b></font>
                 {% else %}
-					<a target='_blank' class="hoverbox" 
-					   onmouseover="this.children[0].src='http://magic.tcgplayer.com/db/wp-ch.asp?CN={{ c.name|escapejs  }}'">{{ c.name }}
+					<a target='_blank' class="hoverbox" href="http://store.tcgplayer.com/products.aspx?name={{ c.name|escapejs }}" 
+					   onmouseover="this.children[0].src='http://magic.tcgplayer.com/db/wp-ch.asp?CN={{ c.name|escapejs  }}'">
+						<font size=2 color=black>{{ c.name }}</font>
                  <iframe class="preview" width='100' height='100' src='about:blank'></iframe>
            		</a>
                    <font size=2>${{ card.average }}:</font>
