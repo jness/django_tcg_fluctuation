@@ -1,5 +1,7 @@
 # Django settings for django_tcg_fluctuation project.
 
+import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
