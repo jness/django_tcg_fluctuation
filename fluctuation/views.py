@@ -5,7 +5,6 @@ from django.shortcuts import render
 
 def index(request):
     '''Main function for Templates'''
-
     cards = {}
     mtgsets = Cards.objects.all().values_list('mtgset', flat=True).distinct()
 
@@ -13,4 +12,4 @@ def index(request):
         c = Cards.objects.filter(mtgset=s).order_by('name')
         cards[s] = c
 
-    return render(request, 'index.html', {'cards': cards})
+    return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': cards})
