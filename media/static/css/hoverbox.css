@@ -21,6 +21,7 @@ p a:hover
 {
         cursor: default;
         color: black;
+	font-size: 13px;
 }
 
 .hoverbox a:visited {
