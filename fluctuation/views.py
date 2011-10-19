@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from fluctuation.models import Cards, History
+from fluctuation.models import Cards
 from django.shortcuts import render
 
 def index(request):
