@@ -16,7 +16,7 @@ class History(models.Model):
         verbose_name = 'History'
         verbose_name_plural = 'History'
 
-    cardid = models.OneToOneField(Cards)
+    info = models.ForeignKey('Cards', null=True)
     name = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now=True)
     average = models.CharField(max_length=10)

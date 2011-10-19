@@ -9,6 +9,11 @@ from fluctuation.models import Cards, History
 from urllib2 import urlopen, quote
 from re import compile
 
+try:
+    latest_count = History.objects.latest('created').runcount
+except:
+    latest_count = 1
+
 for c in Cards.objects.all():
     cardname = quote(c.name)
 
@@ -29,5 +34,5 @@ for c in Cards.objects.all():
     print 'Average Price is: %s' % avg
 
     # Add price to table
-    h = History(name=c.name, average=avg)
+    h = History(name=c.name, average=avg, runcount=latest_count, info=c)
     h.save()
