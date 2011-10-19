@@ -10,6 +10,6 @@ def index(request):
     mtgsets = Cards.objects.all().values_list('mtgset', flat=True).distinct()
 
     # The latest Prices for all cards
-    cards = Cards.objects..order_by('name')
+    cards = Cards.objects.order_by('name')
 
     return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': cards})
