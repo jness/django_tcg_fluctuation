@@ -19,3 +19,4 @@ class History(models.Model):
     name = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now=True)
     average = models.CharField(max_length=10)
+    runcount = models.IntegerField(null=True)
