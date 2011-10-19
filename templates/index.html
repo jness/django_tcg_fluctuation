@@ -1,10 +1,12 @@
 <html>
 <head>
 <title>TCG Price Watch</title>
+<link rel="stylesheet" href='/static/css/hoverbox.css' type="text/css" media="screen, projection" />
 </head>
 
 <body>
 <center><h1>TCGPlayer Daily Price Watch</h1></center>
+<ul class="hoverbox">
 <table width='100%'><tr valign='top'>
 {% for set in mtgsets %}
    <td><h3>{{ set }}</h3>
@@ -19,6 +21,10 @@
                {% if card.paverage < card.average %}
                    <font size=2 color='#00CC00'><b>${{ card.average }}:</b></font>
                 {% else %}
+					<a target='_blank' class="hoverbox" 
+					   onmouseover="this.children[0].src='http://magic.tcgplayer.com/db/wp-ch.asp?CN={{ c.name|escapejs  }}'">{{ c.name }}
+                 <iframe class="preview" width='100' height='100' src='about:blank'></iframe>
+           		</a>
                    <font size=2>${{ card.average }}:</font>
                 {% endif %}
              {% endif %}
@@ -33,5 +39,6 @@
    </td>
 {% endfor %}
 </tr></table>
+</ul>
 </body>
 </html>
