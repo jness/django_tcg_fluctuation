@@ -6,7 +6,7 @@ from django.shortcuts import render
 def index(request):
     '''Main function for Templates'''
 
-    cards = []
+    cards = {}
     mtgsets = Cards.objects.all().values_list('mtgset', flat=True).distinct()
 
     for s in mtgsets:
