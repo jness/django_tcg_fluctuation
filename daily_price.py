@@ -11,6 +11,7 @@ from re import compile
 
 try:
     latest_count = History.objects.latest('created').runcount
+    latest_count = latest_count + 1
 except:
     latest_count = 1
 

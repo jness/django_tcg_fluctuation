@@ -1,5 +1,6 @@
 *.egg-info
 settings.py
 *.pyc
+*.pyo
 *.swp
 db.slite3
