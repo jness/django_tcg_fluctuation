@@ -6,10 +6,11 @@ from django.shortcuts import render
 def index(request):
     '''Main function for Templates'''
 
-    # Each MTG Set we are reviewing
+    cards = []
     mtgsets = Cards.objects.all().values_list('mtgset', flat=True).distinct()
 
-    # The latest Prices for all cards
-    cards = Cards.objects.order_by('name')
+    for s in mtgsets:
+        c = Cards.objects.filter(mtgset=s).order_by('name')
+        cards[s] = c
 
-    return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': cards})
+    return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': set_sort})
