@@ -12,4 +12,6 @@ def index(request):
         c = Cards.objects.filter(mtgset=s).order_by('name')
         cards[s] = c
 
-    return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': cards})
+    updated = Cards.objects.latest('updated').updated.ctime()
+
+    return render(request, 'index.html', {'mtgsets': mtgsets, 'cards': cards, 'updated': updated})

@@ -11,3 +11,5 @@ class Cards(models.Model):
     mtgset = models.CharField(max_length=75)
     average = models.CharField(max_length=10)
     prev_average = models.CharField(max_length=10)
+    updated = models.DateTimeField(auto_now=True)
+
