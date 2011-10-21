@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>TCG Price Watch</title>
+</head>
+
+<body>
+<table cellpadding=5 cellspacing=5><tr valign='top'>
+<tr>
+  <td valign='top' align=left>
+    <iframe width=250 height=400
+	src="http://magic.tcgplayer.com/db/wp-ch.asp?CN={{ card.name }}">
+	</iframe>
+  </td>
+  <td valign=top align=left>
+    <h3>Daily History Watch</h3>
+   <img src='{{ chart.get_url }}' />
+    <br>
+    {% for h in history %}
+      <b>${{ h.average}}</b> @  {{ h.created }}<br>
+    {% endfor %}
+  </td>
+</tr>
+</table>
+
+</body>
+</html>

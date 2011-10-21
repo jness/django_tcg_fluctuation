@@ -5,7 +5,7 @@ from django.core.management import setup_environ
 import settings
 setup_environ(settings)
 
-from fluctuation.models import Cards
+from fluctuation.models import Cards, History
 from urllib2 import urlopen, quote
 from re import compile
 
@@ -32,3 +32,7 @@ for c in Cards.objects.all():
     c.prev_average = c.average
     c.average = avg
     c.save()
+
+    # add to History as well
+    h = History(name = c.name, average=avg, card=c)
+    h.save()

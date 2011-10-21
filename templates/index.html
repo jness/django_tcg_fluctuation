@@ -5,6 +5,13 @@
 </head>
 
 <body>
+
+<a target='_blank' href="https://github.com/jness/django_tcg_fluctuation">
+  <img style="position: absolute; top: 0; left: 0; border: 0;" 
+   src="http://mtg.flip-edesign.com/static/images/github.png"
+   alt="Fork me on GitHub">
+</a>
+
 <center><h1>TCGPlayer Daily Price Watch</h1>
 <h3>Updated @ {{ updated }}<h3>
 </center>
@@ -20,17 +27,17 @@
          <tr>
             <td width=45>
             {% if card.prev_average > card.average %}
-                <font size=2 color='red'></b>${{ card.average }}</b></font>
+                <a target='_blank' href='history?id={{ card.id }}'><font size=2 color='red'><b>${{ card.average }}</b></font></a>
             {% else %}
                {% if card.prev_average < card.average %}
-                   <font size=2 color='#00CC00'><b>${{ card.average }}</b></font>
+                   <a target='_blank'href='history?id={{ card.id }}'><font size=2 color='#00CC00'><b>${{ card.average }}</b></font></a>
                 {% else %}
-                   <font size=2>${{ card.average }}</font>
+                   <a target='_blank' href='history?id={{ card.id }}'><font size=2>${{ card.average }}</font></a>
                 {% endif %}
              {% endif %}
             </td>
             <td>
-            <a target='_blank' class="hoverbox" href="http://store.tcgplayer.com/products.aspx?name={{ card.name }}" 
+            <a target='_blank' class="hoverbox" href="history?id={{ card.id }}" 
               onmouseover="this.children[0].src='http://magic.tcgplayer.com/db/wp-ch.asp?CN={{ card.name|escapejs }}'">
               {{ card.name }}
               <iframe class="preview" width='100' height='100' src='about:blank'></iframe>
@@ -43,5 +50,10 @@
 {% endfor %}
 </tr></table>
 </ul>
+
+<center>
+<font size=1 color='grey'>All prices are pulled from TCGPlayer's High-Mid-Low API and compared against the price from the past day.
+Green price show a increase from the previous day, while red shows a decrease, black prices show no change.</font>
+</center>
 </body>
 </html>

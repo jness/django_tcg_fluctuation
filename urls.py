@@ -7,6 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     url(r'^$', 'fluctuation.views.index'),
+    url(r'^history$', 'fluctuation.views.history'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
