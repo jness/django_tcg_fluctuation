@@ -8,6 +8,7 @@ from pygooglechart import SimpleLineChart
 from pygooglechart import Axis
 
 import math
+from decimal import Decimal
 
 def index(request):
     '''Main function for Templates'''
@@ -17,8 +18,8 @@ def index(request):
     for s in mtgsets:
         c = Cards.objects.filter(mtgset=s).order_by('name')
         for ca in c:
-            ca.average = float(ca.average)
-            ca.prev_average = float(ca.prev_average)
+            ca.average = Decimal(ca.average)
+            ca.prev_average = Decimal(ca.prev_average)
         cards[s] = c
 
     updated = Cards.objects.latest('updated').updated.ctime()
